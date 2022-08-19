@@ -1,7 +1,8 @@
 # Testing MAIB Payment Gateway
 
 ## Install Certificate
-1) First of all you need certificate from Maib with name and credential like ![img.png](img.png)
+1) First of all you need certificate from Maib with name and credential like ![image](https://user-images.githubusercontent.com/42368950/185637609-24c23950-43e6-4708-8d09-2a8cb2e6a597.png)
+
 2) For the second you need to generate ```.pem``` certificate from our ```.pfx``` certificate. And enter the certificate password below
 ```
 openssl pkcs12 -in filename.pfx -out cert.pem -nodes
