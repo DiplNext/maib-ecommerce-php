@@ -88,7 +88,7 @@ If you receive `PENDING` as `RESULT` you need to wait some time like 5 minutes o
 If the `RESULT` stays the same you can do the same procedure.
 > _Note_: The time how your `TRANSACTION_ID` keep alive is `10 minutes` after that you receive `RESULT` `TIMEOUT`. If you receive that `RESULT` you need to create a new transaction.<br>
 > If you need more information about statuses you can check the official MAIB documentation.
-> The `RESULT_CODE` and their messages I attached [below](#table-of-result_code-description):
+> The `RESULT_CODE` and their messages you can get by contacting your manager from MAIB:
 
 6) Next if you want refund your client you need to use `command r`, how can you do this you can see in code below:
 ```
@@ -109,7 +109,7 @@ $post = [
     curl_close($addr);
 ```
 In response you get the `RESULT`: `OK`, `FAILED` or `REVERSED`, if you get `OK`, that's means the reverse operation is successfully completed,
-if you get `REVESED` that means for this `TRANSACTION_ID` you already reversed the client and if you get `FAILED` you get some `RESULT_CODE` from [this table](#table-of-result_code-description).<br/>
+if you get `REVESED` that means for this `TRANSACTION_ID` you already reversed the client and if you get `FAILED` you get some `RESULT_CODE`. For more information about  `RESULT_CODE` messages please contact your MAIB manager.<br/>
 
 7) And the last command what you need for successfully completed test for **MAIB E-commerce module** is `command b` which means `close business day`.
 It's the simple command that must be executed every day at 23:59.
@@ -131,102 +131,7 @@ $errors = curl_error($addr);
 curl_close($addr);
 ```
 
-### Table of RESULT_CODE description
-
-| CODE | DESCRIPTION   | DESCRIPTION FULL                                                            |
-|------|---------------|-----------------------------------------------------------------------------|
-| 000  | Approved      | Approved                                                                    |
-| 100  | Decline       | Decline (general, no comments)                                              |
-| 101  | Decline       | Decline, expired card                                                       |
-| 102  | Decline       | Decline, suspected fraud                                                    |
-| 103  | Decline       | Decline, card acceptor contact acquirer                                     |
-| 104  | Decline       | Decline, restricted card                                                    |
-| 105  | Decline       | Decline, card acceptor call acquirer's security department                  |
-| 106  | Decline       | Decline, allowable PIN tries exceeded                                       |
-| 107  | Decline       | Decline, refer to card issuer                                               |
-| 108  | Decline       | Decline, refer to card issuer's special conditions                          |
-| 109  | Decline       | Decline, invalid merchant                                                   |
-| 110  | Decline       | Decline, invalid amount                                                     |
-| 111  | Decline       | Decline, invalid card number                                                |
-| 112  | Decline       | Decline, PIN data required                                                  |
-| 113  | Decline       | Decline, unacceptable fee                                                   |
-| 114  | Decline       | Decline, no account of type requested                                       |
-| 115  | Decline       | Decline, requested function not supported                                   |
-| 116  | Decline       | Decline, not sufficient funds                                               |
-| 117  | Decline       | Decline, incorrect PIN                                                      |
-| 118  | Decline       | Decline, no card record                                                     |
-| 119  | Decline       | Decline, transaction not permitted to cardholder                            |
-| 120  | Decline       | Decline, transaction not permitted to terminal                              |
-| 121  | Decline       | Decline, exceeds withdrawal amount limit                                    |
-| 122  | Decline       | Decline, security violation                                                 |
-| 123  | Decline       | Decline, exceeds withdrawal frequency limit                                 |
-| 124  | Decline       | Decline, violation of law                                                   |
-| 125  | Decline       | Decline, card not effective                                                 |
-| 126  | Decline       | Decline, invalid PIN block                                                  |
-| 127  | Decline       | Decline, PIN length error                                                   |
-| 128  | Decline       | Decline, PIN kay sync error                                                 |
-| 129  | Decline       | Decline, suspected counterfeit card                                         |
-| 180  | Decline       | Decline, by cardholders wish                                                |
-| 181  | Decline       | Decline, Card is not active                                                 |
-| 182  | Decline       | Decline, Card is not active                                                 |
-| 182  | Decline       | Decline, Card is not active                                                 |
-| 184  | Decline       | Decline, Card is not active                                                 |
-| 185  | Decline       | Decline, Card is not active                                                 |
-| 186  | Decline       | Decline, Card is not active                                                 |
-| 187  | Decline       | Decline, Card is not active                                                 |
-| 188  | Decline       | Decline, Card is not active                                                 |
-| 189  | Decline       | Decline, Card is not active                                                 |
-| 190  | Decline       | Decline, Card is not active                                                 |
-| 191  | Decline       | Decline, Card is not active                                                 |
-| 192  | Decline       | Decline, Card is not active                                                 |
-| 193  | Decline       | Decline, Card is not active                                                 |
-| 194  | Decline       | Decline, Card is not active                                                 |
-| 195  | Decline       | Decline, Card is not active                                                 |
-| 196  | Decline       | Decline, Card is not active                                                 |
-| 197  | Decline       | Decline, Card is not active                                                 |
-| 198  | Decline       | Decline, Card is not active                                                 |
-| 199  | Decline       | Decline, Card is not active                                                 |
-| 200  | Pick-up       | Pick-up (general, no comments)                                              |
-| 201  | Pick-up       | Pick-up, expired card                                                       |
-| 202  | Pick-up       | Pick-up, suspected fraud                                                    |
-| 203  | Pick-up       | Pick-up, card acceptor contact card acquirer                                |
-| 204  | Pick-up       | Pick-up, restricted card                                                    |
-| 205  | Pick-up       | Pick-up, card acceptor call acquirer's security department                  |
-| 206  | Pick-up       | Pick-up, allowable PIN tries exceeded                                       |
-| 207  | Pick-up       | Pick-up, special conditions                                                 |
-| 208  | Pick-up       | Pick-up, lost card                                                          |
-| 209  | Pick-up       | Pick-up, stolen card                                                        |
-| 400  | Accepted      | Accepted (for reversal)                                                     |
-| 499  | Approved      | Approved, no original message data                                          |
-| 500  | Call acquirer | Status message: reconciled, in balance                                      |
-| 900  | Accepted      | Advice acknowledged, no financial liability accepted                        |
-| 901  | Accepted      | Advice acknowledged, finansial liability accepted                           |
-| 902  | Call acquirer | Decline reason message: invalid transaction                                 |
-| 903  | Call acquirer | Status message: re-enter transaction                                        |
-| 904  | Call acquirer | Decline reason message: format error                                        |
-| 905  | Call acquirer | Decline reason message: acqiurer not supported by switch                    |
-| 906  | Call acquirer | Decline reason message: cutover in process                                  |
-| 907  | Call acquirer | Decline reason message: card issuer or switch inoperative                   |
-| 908  | Call acquirer | Decline reason message: transaction destination cannot be found for routing |
-| 909  | Call acquirer | Decline reason message: system malfunction                                  |
-| 910  | Call acquirer | Decline reason message: card issuer signed off                              |
-| 911  | Call acquirer | Decline reason message: card issuer timed out                               |
-| 912  | Call acquirer | Decline reason message: card issuer unavailable                             |
-| 913  | Call acquirer | Decline reason message: duplicate transmission                              |
-| 914  | Call acquirer | Decline reason message: not able to trace back to original transaction      |
-| 915  | Call acquirer | Decline reason message: reconciliation cutover or checkpoint error          |
-| 916  | Call acquirer | Decline reason message: MAC incorrect                                       |
-| 917  | Call acquirer | Decline reason message: MAC key sync error                                  |
-| 918  | Call acquirer | Decline reason message: no communication keys available for use             |
-| 919  | Call acquirer | Decline reason message: encryption key sync error                           |
-| 920  | Call acquirer | Decline reason message: security software/hardware error - try again        |
-| 921  | Call acquirer | Decline reason message: security software/hardware error - no action        |
-| 922  | Call acquirer | Decline reason message: message number out of sequence                      |
-| 923  | Call acquirer | Status message: request in progress                                         |
-| 950  | Not accepted  | Decline reason message: violation of business arrangement                   |
-| 1001 | Error         | System error. Contact with bank acquirer.                                   |
 
 
-
-Credits: [MAIB](https://www.maib.md/), Alexandr Dimov <[alexandr.dimov@maib.md](mailto:alexandr.dimov@maib.md)><br/>
+Credits: [MAIB](https://www.maib.md/)<br/>
 Author: Ispas Eugeniu <[eugenispas15@gmail.com](mailto:eugenispas15@gmail.com)>
